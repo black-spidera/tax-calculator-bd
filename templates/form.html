@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BD Income Tax Calculator</title>
+</head>
+<body>
+  <h2>🧾 Bangladesh Tax Calculator (FY 2024–25)</h2>
+  <form method="post" action="/calculate">
+    Gender: <select name="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+    </select><br><br>
+
+    Marital Status: 
+    <select name="marital_status">
+      <option value="single">Single</option>
+      <option value="married">Married</option>
+    </select><br><br>
+
+    Age: <input type="number" name="age" value="30"><br><br>
+
+    Monthly Salary (Jun-Dec): <input type="number" name="salary1" value="30000"><br>
+    Monthly Salary (Jan-May): <input type="number" name="salary2" value="40000"><br>
+
+    Bonus: <input type="number" name="bonus" value="40000"><br>
+    Freelance Income: <input type="number" name="freelance" value="0"><br>
+    Rental Income: <input type="number" name="rental" value="0"><br>
+    Other Income: <input type="number" name="other" value="0"><br><br>
+
+    House Rent Monthly: <input type="number" name="rent" value="16000"><br>
+    Life Insurance: <input type="number" name="life" value="0"><br>
+    NSC: <input type="number" name="nsc" value="0"><br>
+    DPS: <input type="number" name="dps" value="0"><br>
+    Mutual Fund: <input type="number" name="mutual" value="0"><br>
+    Donation: <input type="number" name="donation" value="0"><br>
+    Energy Devices: <input type="number" name="energy" value="0"><br>
+    Computer Purchase: <input type="number" name="computer" value="0"><br><br>
+
+    Conveyance Allowance (Yearly): <input type="number" name="conveyance" value="0"><br>
+    Medical Allowance (Yearly): <input type="number" name="medical" value="0"><br><br>
+
+    <button type="submit">Calculate Tax</button>
+  </form>
+</body>
+</html>
