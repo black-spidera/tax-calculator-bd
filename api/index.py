@@ -31,10 +31,12 @@ async def calculate(
     energy: float = Form(...),
     computer: float = Form(...),
     conveyance: float = Form(...),
-    medical: float = Form(...)
+    medical: float = Form(...),
+    house_allowance: float = Form(...)
 ):
     income_salary = salary1 * 7 + salary2 * 5
-    gross_income = income_salary + bonus + freelance + rental + other
+    # Add house allowance (monthly * 12) to gross income
+    gross_income = income_salary + bonus + freelance + rental + other + (house_allowance * 12)
 
     rent_rebate = min(0.5 * rent * 12, 25000)
     rebate_eligible = sum([rent_rebate, life, nsc, dps, mutual, donation, energy, computer])

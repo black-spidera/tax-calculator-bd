@@ -195,6 +195,15 @@
           <input type="number" name="medical" value="0" class="w-full border rounded px-3 py-2">
         </div>
       </div>
+      <div class="relative group">
+        <label id="house_allowance_label" class="block mb-1 font-medium flex items-center">House Allowance (Monthly)
+          <span class="ml-1 cursor-pointer text-blue-500" tabindex="0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="white"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 16v-4m0-4h.01" /></svg>
+            <span id="house_allowance_tip" class="absolute left-0 z-10 hidden group-hover:block group-focus:block bg-gray-800 text-white text-xs rounded px-3 py-2 w-56 mt-2 shadow-lg transition-all"></span>
+          </span>
+        </label>
+        <input type="number" name="house_allowance" value="0" class="w-full border rounded px-3 py-2">
+      </div>
       <button id="submit_btn" type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Calculate Tax</button>
     </form>
   </div>
@@ -222,6 +231,7 @@
         computer_label: 'Computer Purchase',
         conveyance_label: 'Conveyance Allowance (Monthly)',
         medical_label: 'Medical Allowance (Monthly)',
+        house_allowance_label: 'House Allowance (Monthly)',
         submit_btn: 'Calculate Tax',
         male: 'Male',
         female: 'Female',
@@ -249,6 +259,7 @@
         computer_label: 'কম্পিউটার ক্রয়',
         conveyance_label: 'কনভেয়েন্স অ্যালাউন্স (মাসিক)',
         medical_label: 'মেডিকেল অ্যালাউন্স (মাসিক)',
+        house_allowance_label: 'হাউস অ্যালাউন্স (মাসিক)',
         submit_btn: 'ট্যাক্স হিসাব করুন',
         male: 'পুরুষ',
         female: 'মহিলা',
@@ -275,6 +286,7 @@
         computer_tip: 'Computer/laptop purchase for education/profession. Example: 30000',
         conveyance_tip: 'Monthly conveyance allowance (tax exempt). Example: 0',
         medical_tip: 'Monthly medical allowance (tax exempt). Example: 0',
+        house_allowance_tip: 'Monthly house allowance received from employer. Example: 5000',
       },
       bn: {
         salary1_tip: 'জুন-ডিসেম্বর মাসের মাসিক বেতন। উদাহরণ: ৩০০০০',
@@ -293,6 +305,7 @@
         computer_tip: 'শিক্ষা/পেশার জন্য কম্পিউটার/ল্যাপটপ ক্রয়। উদাহরণ: ৩০০০০',
         conveyance_tip: 'বার্ষিক কনভেয়েন্স অ্যালাউন্স (করমুক্ত)। উদাহরণ: ০',
         medical_tip: 'বার্ষিক মেডিকেল অ্যালাউন্স (করমুক্ত)। উদাহরণ: ০',
+        house_allowance_tip: 'প্রতি মাসে চাকরি থেকে পাওয়া হাউস অ্যালাউন্স। উদাহরণ: ৫০০০',
       }
     };
     function setLang(lang) {
