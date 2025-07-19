@@ -41,7 +41,11 @@ async def calculate(
     rebate_eligible = min(rebate_eligible, gross_income * 0.25)
     rebate = rebate_eligible * 0.15
 
-    taxable_income = gross_income - (conveyance + medical)
+    # Convert monthly conveyance and medical to yearly
+    conveyance_yearly = conveyance * 12
+    medical_yearly = medical * 12
+
+    taxable_income = gross_income - (conveyance_yearly + medical_yearly)
 
     # Slab based on gender/marital/age
     if age >= 65:
