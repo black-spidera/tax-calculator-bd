@@ -1,12 +1,72 @@
 <!DOCTYPE html>
-<html>
-<head><title>Tax Result</title></head>
-<body>
-  <h2>📌 Tax Summary</h2>
-  <p><strong>Total Income:</strong> ৳{{ gross }}</p>
-  <p><strong>Taxable Income:</strong> ৳{{ taxable }}</p>
-  <p><strong>Rebate:</strong> ৳{{ rebate }}</p>
-  <p><strong>Tax Before Rebate:</strong> ৳{{ tax_before }}</p>
-  <h3>💰 Final Tax Payable: <span style="color: green">৳{{ tax_after }}</span></h3>
+<html lang="en">
+<head>
+  <title>Tax Result</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+  <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-8 mt-8">
+    <div class="flex justify-between items-center mb-6">
+      <h2 id="summary_title" class="text-2xl font-bold text-gray-800">📌 Tax Summary</h2>
+      <select id="lang" class="border rounded px-2 py-1 text-sm">
+        <option value="en">EN</option>
+        <option value="bn">BN</option>
+      </select>
+    </div>
+    <div class="space-y-3">
+      <p><strong id="gross_label">Total Income:</strong> <span class="text-blue-700">৳{{ gross }}</span></p>
+      <p><strong id="taxable_label">Taxable Income:</strong> <span class="text-blue-700">৳{{ taxable }}</span></p>
+      <p><strong id="rebate_label">Rebate:</strong> <span class="text-blue-700">৳{{ rebate }}</span></p>
+      <p><strong id="tax_before_label">Tax Before Rebate:</strong> <span class="text-blue-700">৳{{ tax_before }}</span></p>
+      <h3 class="text-xl font-semibold mt-4"><span id="final_label">💰 Final Tax Payable:</span> <span class="text-green-600">৳{{ tax_after }}</span></h3>
+    </div>
+    <div class="mt-6 text-center">
+      <a href="/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back</a>
+    </div>
+  </div>
+  <script>
+    const dict = {
+      en: {
+        summary_title: '📌 Tax Summary',
+        gross_label: 'Total Income:',
+        taxable_label: 'Taxable Income:',
+        rebate_label: 'Rebate:',
+        tax_before_label: 'Tax Before Rebate:',
+        final_label: '💰 Final Tax Payable:',
+        back: 'Back',
+      },
+      bn: {
+        summary_title: '📌 ট্যাক্স সারাংশ',
+        gross_label: 'মোট আয়:',
+        taxable_label: 'করযোগ্য আয়:',
+        rebate_label: 'রিবেট:',
+        tax_before_label: 'রিবেটের আগে ট্যাক্স:',
+        final_label: '💰 চূড়ান্ত ট্যাক্স পরিশোধযোগ্য:',
+        back: 'ফিরে যান',
+      }
+    };
+    function setLang(lang) {
+      for (const key in dict[lang]) {
+        const el = document.getElementById(key);
+        if (el) {
+          if(key === 'final_label') el.textContent = dict[lang][key];
+          else el.textContent = dict[lang][key];
+        }
+      }
+      document.documentElement.lang = lang === 'bn' ? 'bn' : 'en';
+      document.querySelector('a').textContent = dict[lang].back;
+      localStorage.setItem('lang', lang);
+    }
+    const langSel = document.getElementById('lang');
+    langSel.addEventListener('change', function(e) {
+      setLang(e.target.value);
+    });
+    // On load, use localStorage or default to en
+    const savedLang = localStorage.getItem('lang') || 'en';
+    langSel.value = savedLang;
+    setLang(savedLang);
+  </script>
 </body>
 </html>
