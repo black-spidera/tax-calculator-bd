@@ -22,10 +22,18 @@
       <p><strong id="tax_before_label">Tax Before Rebate:</strong> <span class="text-blue-700">৳{{ tax_before }}</span></p>
       <h3 class="text-xl font-semibold mt-4"><span id="final_label">💰 Final Tax Payable:</span> <span class="text-green-600">৳{{ tax_after }}</span></h3>
     </div>
-    <div class="mt-6 text-center">
+    <div class="mt-6 text-center flex flex-col gap-2">
       <a href="/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back</a>
+      <button id="pdf_btn" type="button" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Download PDF</button>
     </div>
   </div>
+  <style>
+    @media print {
+      body * { visibility: hidden !important; }
+      .print-area, .print-area * { visibility: visible !important; }
+      .print-area { position: absolute; left: 0; top: 0; width: 100vw; margin: 0; box-shadow: none; }
+    }
+  </style>
   <script>
     const dict = {
       en: {
@@ -67,6 +75,15 @@
     const savedLang = localStorage.getItem('lang') || 'en';
     langSel.value = savedLang;
     setLang(savedLang);
+
+    // PDF download button
+    document.getElementById('pdf_btn').addEventListener('click', function() {
+      // Add a class to the result card for print
+      const card = document.querySelector('.max-w-md');
+      card.classList.add('print-area');
+      window.print();
+      setTimeout(() => card.classList.remove('print-area'), 1000);
+    });
   </script>
 </body>
 </html>
